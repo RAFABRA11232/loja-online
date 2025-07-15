@@ -1,0 +1,36 @@
+const fetch = require('node-fetch');
+
+exports.handler = async function(event) {
+  const { produto, valor } = JSON.parse(event.body);
+  const token = "SEU_TOKEN_PAGSEGURO";
+  const email = "SEU_EMAIL_PAGSEGURO";
+
+  const url = `https://ws.pagseguro.uol.com.br/v2/checkout?email=${email}&token=${token}`;
+
+  const xmlBody = `<checkout>
+    <currency>BRL</currency>
+    <items>
+      <item>
+        <id>1</id>
+        <description>${produto}</description>
+        <amount>${valor.toFixed(2)}</amount>
+        <quantity>1</quantity>
+      </item>
+    </items>
+  </checkout>`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/xml; charset=UTF-8"
+    },
+    body: xmlBody
+  });
+
+  const responseText = await res.text();
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ xml: responseText })
+  };
+};

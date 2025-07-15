@@ -1,0 +1,17 @@
+function pagarAgora(tipo) {
+  const produto = "Relógio Smart";
+  const valor = 199.90;
+
+  fetch(`/api/criarPagamento${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`, {
+    method: "POST",
+    body: JSON.stringify({ produto, valor })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.init_point) {
+      window.location.href = data.init_point;
+    } else if (data.link) {
+      window.location.href = data.link;
+    }
+  });
+}
