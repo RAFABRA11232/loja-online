@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaShop - Sua Loja de Confiança</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+  <header>
+    <h1>NovaShop</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="produtos">
+      <h2>Catálogo</h2>
+      <div class="produto">
+        <img src="https://via.placeholder.com/250" alt="Relógio Moderno">
+        <h3>Relógio Smart Premium</h3>
+        <p class="preco">R$ 199,90</p>
+        <p>Relógio com monitoramento de batimentos, oxigenação e notificações inteligentes.</p>
+        <button onclick="comprar('Relógio Smart Premium', 199.90)">Comprar</button>
+      </div>
+
+      <div class="produto">
+        <img src="https://via.placeholder.com/250" alt="Fone Bluetooth">
+        <h3>Fone Bluetooth 5.1</h3>
+        <p class="preco">R$ 129,90</p>
+        <p>Fone com microfone, graves potentes e bateria de longa duração.</p>
+        <button onclick="comprar('Fone Bluetooth 5.1', 129.90)">Comprar</button>
+      </div>
+    </section>
+
+    <section id="checkout">
+      <h2>Resumo da Compra</h2>
+      <ul id="carrinho"></ul>
+      <p>Total: R$ <span id="total">0.00</span></p>
+      <button onclick="pagarAgora()">Pagar com Mercado Pago</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 NovaShop. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
